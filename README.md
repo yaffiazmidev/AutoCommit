@@ -1,12 +1,12 @@
 # AutoCommit
 
-**AutoCommit** is a Swift-based command line tool that automatically generates Git commit messages using the **Gemini API**.  
+**AutoCommit** is a Swift-based command-line tool that automatically generates Git commit messages using the **Gemini API**.  
 Perfect for developers who want faster, cleaner, and more consistent commit workflows without typing messages manually.
 
 ---
 
 ## 🚀 Features
-- Reads changes from Git (`git diff --cached`)
+- Reads staged changes from Git (`git diff --cached`)
 - Sends the diff to the Gemini API
 - Generates concise and descriptive commit messages following best practices
 - Automatically commits without manual message input
@@ -15,13 +15,19 @@ Perfect for developers who want faster, cleaner, and more consistent commit work
 
 ## 📦 Installation
 
-### 1. Clone the Repository
+### 1. Create the Command-Line Tool Project
 ```bash
-git clone https://github.com/username/AutoCommit.git
+# Go to your desired directory
+mkdir AutoCommit
 cd AutoCommit
+swift package init --type executable
 ```
 
-### 2. Set Your Gemini API Key
+### 2. Replace main.swift
+	1.	Open the Sources/AutoCommit/main.swift file in Xcode or your editor.
+	2.	Replace its contents with the updated AutoCommit code.
+
+### 3. Set Your Gemini API Key
 Make sure you have a **Gemini API key**. Store it in an environment variable:
 ```bash
 export GEMINI_API_KEY="YOUR_API_KEY"
@@ -35,12 +41,12 @@ Then reload your shell:
 source ~/.zshrc
 ```
 
-### 3. Build the Project
+### 4. Build the Project
 ```bash
 swift build -c release
 ```
 
-### 4. Install the Command Line Tool
+### 5. Install the Command Line Tool
 ```bash
 cp .build/release/AutoCommit /usr/local/bin/auto-commit
 ```
@@ -58,7 +64,12 @@ cp .build/release/AutoCommit /usr/local/bin/auto-commit
    ```bash
    auto-commit
    ```
-4. The tool will:
+   or
+   
+   ```bash
+   ./AutoCommit/.build/release/AutoCommit
+   ```
+5. The tool will:
    - Read changes (`git diff --cached`)
    - Send them to the Gemini API
    - Receive a commit message
